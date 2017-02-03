@@ -1,0 +1,34 @@
+<h1><%= @placement.title %></h1>
+<br>
+<div>
+  <div class="map">
+    <%= image_tag google_map(URI.encode(@placement.address)) %>
+  </div>
+  <p>Price: <%= @placement.price %></p>
+  <P>Address: <%= @placement.address %></P>
+</div>
+<hr>
+<% @placement.comments.each do |comment| %>
+    <p><%= comment.text %></p>
+    <div id="image_container">
+      <% comment.images.each do |image| %>
+          <%= image_tag image.url, class: 'uploaded-images' %>
+      <% end %>
+    </div>
+    <hr>
+<% end %>
+<% if current_user %>
+    <%= form_for @placement.comments.new, url:{ controller: 'comments', action: 'create'} do |c| %>
+        <p>Comment: <%= c.text_area :text %></p>
+        <p>Placement images: <%= c.file_field :images, multiple: true, required: true, accept: 'image/png,image/gif,image/jpeg' %></p>
+        <%= c.hidden_field 'placement_id', value: @placement.id  %>
+        <%= c.submit 'Comment' %>
+    <% end %>
+<% else %>
+    <div class="well centered">
+      Please register or login to be able to comment placements
+    </div>
+<% end %>
+
+<br>
+<a href="<%= root_path %>" class="btn btn-info" role="button">Back to main page</a>

@@ -1,0 +1,26 @@
+<h1>Placements</h1>
+<br>
+<div class="well centered">
+  <table class="datatable table table-striped table-bordered">
+    <tr>
+      <th>Placement title</th>
+      <th>Placement address</th>
+    </tr>
+    <% @placements.each do |placement| %>
+        <tr>
+          <td> <%= placement.title %> </td>
+          <td> <%= placement.address %> </td>
+          <td> <%= link_to 'View', placement_path(placement.id) %></td>
+        </tr>
+    <% end %>
+  </table>
+</div>
+
+<br>
+<% if current_user %>
+    <a href="<%= new_placement_path %>" class="btn btn-info" role="button">New placement</a>
+<% else %>
+    <div class="well centered">
+      Please register or login to be able to create new placements
+    </div>
+<% end %>
