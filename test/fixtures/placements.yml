@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  price: 9.99
-  address: MyString
+  title: Placement one
+  price: 40.99
+  address: Суми вул. Кооперативна 1
 
 two:
-  title: MyString
+  title: Placement two
   price: 9.99
-  address: MyString
+  address: Kyiv Khreshcatyk

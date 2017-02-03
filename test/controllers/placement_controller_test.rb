@@ -1,28 +1,23 @@
 require 'test_helper'
 
 class PlacementControllerTest < ActionDispatch::IntegrationTest
-  test "should get index," do
-    get placement_index,_url
+  test "should get index" do
+    get placements_path
     assert_response :success
   end
 
-  test "should get create," do
-    get placement_create,_url
-    assert_response :success
+  test "should get create" do
+    post placements_path
+    assert_response :found
   end
 
-  test "should get delete," do
-    get placement_delete,_url
-    assert_response :success
-  end
-
-  test "should get show," do
-    get placement_show,_url
+  test "should get show" do
+    get placement_path(placements(:one).id)
     assert_response :success
   end
 
   test "should get edit" do
-    get placement_edit_url
+    get placement_path(placements(:one).id)
     assert_response :success
   end
 

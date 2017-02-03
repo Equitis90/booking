@@ -1,5 +1,5 @@
 class PlacementsController < ApplicationController
-  before_filter :authorize, except: [:index, :show]
+  before_action :authorize, except: [:index, :show]
 
   def index
     @placements = Placement.all
@@ -10,13 +10,19 @@ class PlacementsController < ApplicationController
   end
 
   def create
-    ActiveRecord::Base.transaction do
-      pl = Placement.create!(placement_paramenters)
-      comment = comment_parameters[:comments_attributes]
-      comment[:placement_id] = pl.id
-      Comment.create!(comment)
+    old_placement = Placement.find_by_title(placement_paramenters[:title])
+    if old_placement
+      flash[:warning] = 'Placement with given name already exists! You still can add some comments'
+      redirect_to placement_path(old_placement.id)
+    else
+      ActiveRecord::Base.transaction do
+        placement = Placement.create!(placement_paramenters)
+        comment = comment_parameters[:comments_attributes]
+        comment[:placement_id] = placement.id
+        Comment.create!(comment)
+      end
+      redirect_to placements_path
     end
-    redirect_to placements_path
   rescue ActiveRecord::RecordInvalid => e
     flash[:danger] = e.to_s
     redirect_to new_placement_path

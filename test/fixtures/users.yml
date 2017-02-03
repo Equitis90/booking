@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  login: MyString
-  password_digest: MyString
+joe:
+  login: Joe
+  password_digest: joespassworddigest
 
-two:
-  login: MyString
-  password_digest: MyString
+bill:
+  login: Bill
+  password_digest: billspassworddigest

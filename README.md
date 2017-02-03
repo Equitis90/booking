@@ -1,24 +1,23 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple booking guide application allows users create, view and comment placements.
+Users must register and log in to create placements and leave comments about them.
+Placement description consist of: address, price and placement name, all fields must be filled.
+Comments to the placements consist of comment itself and images of placements, images field must be filled while comment text is not necessary.
+Images field support multiselection.
 
-Things you may want to cover:
+* Ruby version - 2.3.1
 
-* Ruby version
+* Rails version - 5.0.1
 
-* System dependencies
+* RDBMS - PostgreSQL 9.4.10
 
-* Configuration
+Used gems:
 
-* Database creation
+* httparty - connection to Google Maps API for address validation
 
-* Database initialization
+* carrierwave - upload and manage uploaded images.
 
-* How to run the test suite
+* bootstrap-sass - navigation bar and application elements style.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* bcrypt - users password encryption.

@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  text: MyText
-  images: MyString
+  text: Some comment
+  images: ['image1.jpg', 'image2.jpg']
   placement: one
 
 two:
-  text: MyText
-  images: MyString
+  text: Another comment
+  images: ['image3.jpg', 'image4.jpg']
   placement: two
