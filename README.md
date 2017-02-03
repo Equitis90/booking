@@ -1,8 +1,11 @@
 # README
 
 Simple booking guide application allows users create, view and comment placements.
+
 Users must register and log in to create placements and leave comments about them.
+
 Placement description consist of: address, price and placement name, all fields must be filled.
+
 Comments to the placements consist of comment itself and images of placements, images field must be filled while comment text is not necessary.
 Images field support multiselection.
 
@@ -14,7 +17,7 @@ Images field support multiselection.
 
 Used gems:
 
-* httparty - connection to Google Maps API for address validation
+* httparty - connection to Google Maps API for address validation.
 
 * carrierwave - upload and manage uploaded images.
 
