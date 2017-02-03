@@ -11,13 +11,18 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <% if current_user %>
-            <li>Signed in as <%= current_user.login %></li>
+            <li class="navbar-brand">Signed in as <%= current_user.login %></li>
             <li><%= link_to "Logout", '/logout' %></li>
         <% else %>
             <li><%= link_to 'Login', '/login' %></li>
             <li><%= link_to 'Signup', '/signup' %></li>
         <% end %>
       </ul>
+      <% unless current_page?(:controller => 'placements', :action => 'index') %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="<%= root_path %>" class="btn btn-info" role="button">Back to main page</a></li>
+        </ul>
+      <% end %>
     </div>
   </nav>
   <body>

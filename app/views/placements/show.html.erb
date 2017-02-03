@@ -1,21 +1,22 @@
 <h1><%= @placement.title %></h1>
 <br>
-<div>
   <div class="map">
     <%= image_tag google_map(URI.encode(@placement.address)) %>
   </div>
-  <p>Price: <%= @placement.price %></p>
-  <P>Address: <%= @placement.address %></P>
+<p><b>Price: </b><%= @placement.price %></p>
+<P><b>Address: </b><%= @placement.address %></P>
+
+<div class="comments">
+  <% @placement.comments.each do |comment| %>
+      <p><%= comment.text %></p>
+      <div id="image_container">
+        <% comment.images.each do |image| %>
+            <%= image_tag image.url, class: 'uploaded-images' %>
+        <% end %>
+      </div>
+      <hr>
 </div>
-<hr>
-<% @placement.comments.each do |comment| %>
-    <p><%= comment.text %></p>
-    <div id="image_container">
-      <% comment.images.each do |image| %>
-          <%= image_tag image.url, class: 'uploaded-images' %>
-      <% end %>
-    </div>
-    <hr>
+
 <% end %>
 <% if current_user %>
     <%= form_for @placement.comments.new, url:{ controller: 'comments', action: 'create'} do |c| %>
@@ -31,4 +32,3 @@
 <% end %>
 
 <br>
-<a href="<%= root_path %>" class="btn btn-info" role="button">Back to main page</a>
