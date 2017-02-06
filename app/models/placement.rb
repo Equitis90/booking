@@ -5,6 +5,7 @@ class Placement < ApplicationRecord
   accepts_nested_attributes_for :comments
 
   validates_presence_of :title, :price, :address
+  validates_uniqueness_of :title
 
   private
 
