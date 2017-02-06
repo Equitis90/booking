@@ -26,10 +26,6 @@ class PlacementsController < ApplicationController
     @placement = Placement.joins(:comments).find(params[:id])
   end
 
-  def update
-    puts params
-  end
-
   private
 
   def placement_paramenters
