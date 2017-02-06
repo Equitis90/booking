@@ -12,9 +12,7 @@ class PlacementsController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       placement = Placement.create!(placement_paramenters)
-      comment = comment_parameters[:comments_attributes]
-      comment[:placement_id] = placement.id
-      Comment.create!(comment)
+      placement.comments.create!(comment_parameters)
     end
     redirect_to placements_path
   rescue ActiveRecord::RecordInvalid => e
@@ -33,6 +31,6 @@ class PlacementsController < ApplicationController
   end
 
   def comment_parameters
-    params.require(:placement).permit(:comments_attributes => [:text, {images: []}])
+    params.require(:placement).require(:comments_attributes).permit(:text, {images: []})
   end
 end
